@@ -1,4 +1,5 @@
 from datetime import datetime
+from os import getenv
 
 from flask import (Flask, render_template, request,
                    url_for, redirect, flash)
@@ -13,8 +14,7 @@ app = Flask(__name__)
 # config
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///databases/todo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = ''
-
+app.config['SECRET_KEY'] = getenv('SECRET_KEY')
 
 # database
 db = SQLAlchemy(app)
