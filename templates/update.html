@@ -1,0 +1,25 @@
+{% extends 'includes/base.html' %}
+
+{% block title %}
+    Update {{ fetch.id }}
+{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <form action="{{ url_for('update', id=fetch.id) }}" method="post">
+        <div class="mb-3">
+            <h1>Update Todo</h1>
+        </div>
+        <div class="mb-3">
+            {{ form.hidden_tag() }}
+            {{ form.title.label(class='my-3') }}
+            {{ form.title(class='form-control', value=fetch.title) }}
+            {{ form.description.label(class='my-3') }}
+            {{ form.description(class='form-control', value='safka') }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock body %}
