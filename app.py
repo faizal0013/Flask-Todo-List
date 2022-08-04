@@ -46,6 +46,7 @@ def index():
     return render_template('index.html', form=form, recs=recs)
 
 
+# add todo
 @app.route('/todo', methods=['POST'])
 def todo():
 
@@ -62,6 +63,7 @@ def todo():
     return redirect(url_for('index'))
 
 
+# update todo
 @app.route('/todo/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
 
@@ -79,6 +81,7 @@ def update(id):
         # update
         rec.title = title
         rec.description = description
+        rec.datetime = datetime.utcnow()
 
         # commit
         db.session.commit()
@@ -95,6 +98,7 @@ def update(id):
     return render_template('update.html', fetch=fetch, form=form)
 
 
+# delete todo
 @app.route('/todo/delete/<int:id>')
 def delete(id):
 
