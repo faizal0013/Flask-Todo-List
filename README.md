@@ -22,6 +22,20 @@ pip3 install virtualenv
 virtualenv venv
 ```
 
+## Activate venv
+
+- mac or linux
+
+```
+source venv/bin/activate
+```
+
+- window
+
+```
+./venv/Scripts/activate.bat
+```
+
 ## install requirements for todo project
 
 ```
