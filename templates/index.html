@@ -1,69 +1,28 @@
 {% extends 'includes/base.html' %}
 
 {% block title %}
-    todo-list
+    Welcome
 {% endblock title %}
 
 {% block body %}
 
-<div class="container mt-5">
-    <form action="{{ url_for('todo') }}" method="post">
-        <div class="mb-3">
-            <h1>Add Todo</h1>
+<div class="container px-4 text-center" style="margin-top: 15rem;">
+    <div class="row gx-5">
+        <div class="col">
+            <div class="p-3 border bg-body shadow">
+                <a href="{{ url_for('login') }}" class="btn btn-outline-info btn-lg">
+                    Log in
+                </a>
+            </div>
         </div>
-        <div class="mb-3">
-            {{ form.hidden_tag() }}
-            {{ form.title.label(class='my-3') }}
-            {{ form.title(class='form-control') }}
-            {{ form.description.label(class='my-3') }}
-            {{ form.description(class='form-control') }}
+        <div class="col">
+            <div class="p-3 border bg-body shadow">
+                <a href="{{ url_for('signup') }}" class="btn btn-outline-info btn-lg">
+                    Sign up
+                </a>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
-
-<!-- flash messages -->
-<div class="container mt-5">
-{% for message in get_flashed_messages() %}
-    <div class="w-50 border border-success border-3 rounded">
-        <h3 class="text-success p-4">{{ message }}</h3>
     </div>
-{% endfor %}
-</div>
-
-<div class="container mt-5">
-    <div class="mb-3">
-        <h1>Your Todo</h1>
-    </div>
-    {% if recs|length == 0 %}
-        <p class="bg-warning p-2 text-dark bg-opacity-50 p-2 rounded">No Todo please add todo</p>
-    {% else %}
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date And Time</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for rec in recs %}
-            <tr>
-                <th scope="row">{{ loop.index }}</th>
-                <td>{{ rec.title }}</td>
-                <td>{{ rec.description }}</td>
-                <td>{{ rec.datetime }}</td>
-                <td>
-                    <a href="{{ url_for('update', id=rec.id) }}" class="btn btn-outline-secondary">Update</a>
-                    <a href="{{ url_for('delete', id=rec.id) }}" class="btn btn-outline-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% endif %}
 </div>
 
 {% endblock body %}
